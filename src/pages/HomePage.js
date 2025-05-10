@@ -6,19 +6,19 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <div className="app-bar">
-        <div className="logo-container">
-          <img src="/logo.png" alt="Logo" className="logo" />
-          <h1 className="test-title">TEC Kampus</h1>
+    <div className="home-page">
+      <div className="home-app-bar">
+        <div className="home-logo-container">
+          <img src="/logoukdc.png" alt="Logo" className="home-logo" />
+          <h1 className="home-test-title">TEC UKDC</h1>
         </div>
-        <button className="login-button" onClick={() => navigate("/login")}>
+        <button className="home-login-button" onClick={() => navigate("/login")}>
           Login
         </button>
       </div>
 
       <div className="home-content">
-        <h2>Informasi Tes TEC Kampus</h2>
+        <h2>Informasi Tes TEC</h2>
         <p>🗓 Jadwal: Setiap Senin & Kamis</p>
         <p>💰 Biaya: Rp 150.000</p>
         <p>👩‍🏫 Pengajar: Dosen Bahasa Inggris Berpengalaman</p>

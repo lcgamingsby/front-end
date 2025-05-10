@@ -1,58 +1,82 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "../App.css"; // pastikan file CSS diimpor
+import { useNavigate } from "react-router-dom";
+
 
 function AdminDashboard() {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [testResults, setTestResults] = useState([]);
-
-  const handleAddStudent = () => {
-    alert(`Mahasiswa baru ditambahkan:\nNama: ${name}\nPassword: ${password}`);
-    // Di versi backend, data ini akan dikirim ke database
-    setName("");
-    setPassword("");
+  const [adminName] = useState("");
+  const [ongoingExams, setOngoingExams] = useState([]);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    navigate("/login");
   };
 
   useEffect(() => {
-    const results = JSON.parse(localStorage.getItem("testResult"));
-    if (results) {
-      setTestResults([results]); // jika banyak data, bisa ditambahkan ke array
-    }
+    // Dummy data exam
+    setOngoingExams([
+      {
+        id: 1,
+        title: "Session 1 TEC Exam",
+        date: "12 Jan 2024",
+        time: "14:00–16:30",
+        remaining: "00:45:00",
+        status: "ongoing",
+      },
+    ]);
   }, []);
 
   return (
-    <div className="dashboard-container">
-      <h2>Admin Dashboard</h2>
-      <input
-        type="text"
-        placeholder="Nama Mahasiswa"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleAddStudent}>Tambah Mahasiswa</button>
+    <div className="admin-dashboard">
+      <header className="admin-header">
+        <div className="logo-title">
+          <img src="/logoukdc.png" alt="Logo" className="dashboard-logo" />
+          <h1>TEC UKDC</h1>
+        </div>
+        <nav className="admin-nav">
+        <button className="nav-btn active">Home</button>
+        <button className="nav-btn">Exam Schedule</button>
+        <button className="nav-btn">Questions</button>
+        <button className="nav-btn">Student Accounts</button>
+      </nav>
+        <div className="admin-info">
+          <strong>{adminName}</strong>
+          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        </div>
+      </header>
 
-      <div>
-        {testResults.length > 0 ? (
-          testResults.map((result, idx) => (
-            <div key={idx}>
-              <h3>Hasil Tes untuk {result.username}</h3>
-              <p>Nilai: {result.score}</p>
-              <ul>
-                {result.userAnswers.map((answer, i) => (
-                  <li key={i}>Soal {answer.question}: Pilihan kamu - Option {String.fromCharCode(65 + answer.selected)}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        ) : (
-          <p>Tidak ada hasil tes untuk ditampilkan.</p>
-        )}
-      </div>
+      <main className="admin-content">
+        <div className="admin-stats">
+          <div className="stat-card">
+            <div className="stat-title">Questions Made</div>
+            <div className="stat-value">123</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-title">Unpublished Exam Scores</div>
+            <div className="stat-value">456</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-title">Upcoming Exams</div>
+            <div className="stat-value">789</div>
+          </div>
+        </div>
+
+        <section className="exam-section">
+          <h2>Ongoing Exams</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+          <div className="exam-cards">
+            {ongoingExams.map((exam) => (
+              <div key={exam.id} className="exam-card dark">
+                <strong>{exam.title}</strong>
+                <div>
+                  {exam.date} ({exam.time})
+                </div>
+                <div className="exam-status">Ongoing ({exam.remaining} left)</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
