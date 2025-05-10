@@ -29,6 +29,10 @@ const App = () => {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showResultDialog, setShowResultDialog] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [flaggedQuestions, setFlaggedQuestions] = useState([]);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
+
+
 
   const audioRef = useRef(new Audio(questions[currentQuestion].audio));
 
@@ -53,6 +57,12 @@ const App = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleFlag = () => {
+    if (!flaggedQuestions.includes(currentQuestion)) {
+      setFlaggedQuestions((prev) => [...prev, currentQuestion]);
+    }
+  };  
+
   const handlePlayPause = () => {
     if (playing) {
       audioRef.current.pause();
@@ -68,23 +78,42 @@ const App = () => {
 
   const handleNext = () => {
     const correct = questions[currentQuestion].correctOption;
-    if (selectedOption === correct) {
-      setScore((prev) => prev + 10);
+  
+    if (selectedOption !== null) {
+      // Naikkan skor kalau benar
+      if (selectedOption === correct) {
+        setScore((prev) => prev + 10);
+      }
+  
+      // Hapus flag kalau soal ini di-flag
+      if (flaggedQuestions.includes(currentQuestion)) {
+        setFlaggedQuestions((prev) =>
+          prev.filter((q) => q !== currentQuestion)
+        );
+      }
+  
+      // Tambahkan ke daftar soal yang sudah dijawab
+      if (!answeredQuestions.includes(currentQuestion)) {
+        setAnsweredQuestions((prev) => [...prev, currentQuestion]);
+      }
     }
-
+  
+    // Simpan jawaban
     setUserAnswers((prev) => [
       ...prev,
       { question: currentQuestion + 1, selected: selectedOption },
     ]);
-
+  
+    // Pindah ke soal berikutnya
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion((prev) => prev + 1);
       setSelectedOption(null);
       audioRef.current.pause();
     } else {
-      setShowConfirmDialog(true); // buka dialog konfirmasi
+      setShowConfirmDialog(true);
     }
   };
+  
 
   const handleFinishTest = () => {
     // Simpan hasil tes ke database
@@ -103,13 +132,6 @@ const App = () => {
   };
   
 
-  const getOptionClass = (index) => {
-    if (selectedOption === null) return "";
-    if (index === questions[currentQuestion].correctOption) return "correct";
-    if (index === selectedOption) return "incorrect";
-    return "";
-  };
-
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -121,6 +143,7 @@ const App = () => {
   return (
     <div className="app-container">
       {/* App Bar */}
+
       <div className="app-bar">
         <div className="logo-container">
           <img src="/logoukdc.png" alt="Logo" className="logo" />
@@ -131,35 +154,70 @@ const App = () => {
       </div>
 
       <div className="content">
+        <div className="sidebar">
+          <div className="section-title">Grammar</div>
+          {[...Array(15)].map((_, i) => (
+            <div key={i} className={`question-number ${i === 2 ? 'active' : ''}`}>{i+1}</div>
+          ))}
+          <div className="section-title">Reading</div>
+          {[...Array(15)].map((_, i) => (
+            <div key={i} className={`question-number ${i === 2 ? 'active' : ''}`}>{i+1}</div>
+          ))}
+          <div className="section-title">Listening</div>
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+                className={`question-number 
+                  ${i === currentQuestion ? 'active' : ''}
+                  ${flaggedQuestions.includes(i) ? 'flagged' : ''}
+                  ${answeredQuestions.includes(i) ? 'answered' : ''}
+                `}
+              >
+                {i + 1}
+              </div>
+            ))}
+        </div>
+
         <Card className="card">
           <div className="audio-controls">
             <Button variant="contained" className="play-button" onClick={handlePlayPause}>
               {playing ? "Pause" : "Play"}
             </Button>
+            <span className="audio-timer">0:00/0:10</span>
           </div>
+
+          <p>{`Soal ${currentQuestion+1}: Lorem ipsum dolor sit amet consectetur?`}</p>
 
           <div className="options">
             {questions[currentQuestion].options.map((option, index) => (
               <Button
-                key={index}
-                variant={selectedOption === index ? "contained" : "outlined"}
-                className={`option-button ${getOptionClass(index)}`}
-                onClick={() => handleOptionClick(index)}
-                disabled={selectedOption !== null}
-              >
-                {option}
-              </Button>
+              key={index}
+              variant={selectedOption === index ? "contained" : "outlined"}
+              className={`option-button ${selectedOption === index ? "selected" : ""}`}
+              onClick={() => handleOptionClick(index)}
+            >
+              {option}
+            </Button>
             ))}
           </div>
 
-          <Button
-            variant="contained"
-            className="next-button"
-            onClick={handleNext}
-            disabled={selectedOption === null}
-          >
-            {currentQuestion === questions.length - 1 ? "Selesai" : "Next"}
-          </Button>
+          <div className="navigation-buttons">
+            <Button variant="outlined" onClick={() => setCurrentQuestion((prev) => Math.max(prev-1, 0))}>
+              Previous
+            </Button>
+            <Button
+              className="flag-button"
+              onClick={handleFlag}
+            >
+              Flag
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleNext}
+            >
+              {currentQuestion === questions.length-1 ? "Selesai" : "Next"}
+            </Button>
+          </div>
         </Card>
       </div>
 
