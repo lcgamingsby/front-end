@@ -123,7 +123,7 @@ const App = () => {
       {/* App Bar */}
       <div className="app-bar">
         <div className="logo-container">
-          <img src="/logo-kecil.png" alt="Logo" className="logo" />
+          <img src="/logoukdc.png" alt="Logo" className="logo" />
           <h1 className="test-title">Listening Test</h1>
         </div>
         <span className="timer">⏳ {formatTime(timeLeft)}</span>

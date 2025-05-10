@@ -53,35 +53,119 @@
 }
 
 /*StudentDashboard*/
-.dashboard-container {
-  text-align: center;
-  padding: 40px;
+.exam-dashboard {
+  padding: 20px 40px;
+  font-family: "Arial", sans-serif;
+  color: #111;
 }
 
-.dashboard-button {
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* <== Efek bayangan */
+  margin-bottom: 30px;
+}
+
+
+.logo-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
+  gap: 10px;
+}
+
+.dashboard-logo {
+  width: 50px;
+}
+
+.user-info {
+  text-align: right;
+  font-size: 14px;
+  color: #1a1a60;
+}
+
+.exam-section {
+  margin-bottom: 40px;
+}
+
+.exam-section h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #1a1a60;
+}
+
+.exam-section p {
+  margin-top: 4px;
+  color: #555;
+}
+
+.exam-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 20px;
-  transition: background-color 0.3s ease;
 }
 
-.dashboard-button:hover {
-  background-color: #45a049;
+.exam-card {
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  font-size: 15px;
 }
 
-.dashboard-button img {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+.exam-card.dark {
+  background-color: #06094d;
+  color: white;
 }
+
+.exam-card.light {
+  background-color: #cbd4ff;
+  color: #06094d;
+}
+
+.exam-status {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.border-blue {
+  border: 2px solid #06094d;
+}
+
+.border-red {
+  border: 2px solid #c50000;
+}
+
+.score-label {
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.score {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.score-blue {
+  color: #06094d;
+}
+
+.score-red {
+  color: #c50000;
+}
+
+.exam-card.dark:hover {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.exam-card.light:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
 /*StudentDashboard*/
 
 /* Tombol Play */

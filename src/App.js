@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
-import ListeningTest from "./pages/ListeningTest"
+import Test1 from "./pages/test"
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/student" element={<StudentDashboard />} />
-        <Route path="/listening" element={<ListeningTest />} />
+        <Route path="/student" element={<StudentDashboard/>} />
+        <Route path="/test1" element={<Test1/>} />
       </Routes>
     </Router>
   );
