@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css"; // pastikan file CSS diimpor
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function AdminDashboard() {
@@ -35,9 +36,9 @@ function AdminDashboard() {
         </div>
         <nav className="admin-nav">
         <button className="nav-btn active">Home</button>
-        <button className="nav-btn">Exam Schedule</button>
-        <button className="nav-btn">Questions</button>
-        <button className="nav-btn">Student Accounts</button>
+        <NavLink to="/exam-schedule" className="nav-btn">Exam Schedule</NavLink>
+        <NavLink to="/questions" className="nav-btn">Questions</NavLink>
+        <NavLink to="/student-accounts" className="nav-btn">Student Accounts</NavLink>
       </nav>
         <div className="admin-info">
           <strong>{adminName}</strong>
