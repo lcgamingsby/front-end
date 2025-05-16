@@ -6,6 +6,3 @@ UNTUK TEST BISA LANGSUNG NPM START DI FOLDER DIREKTORI INI
 UPDATE 
 
 Perubahan UI Halaman student dashboard
-homepage
-loginpage
-admin dashboard(Home)
