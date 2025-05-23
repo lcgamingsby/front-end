@@ -1,0 +1,136 @@
+/*Admin Dashboard*/
+.admin-dashboard {
+    font-family: "Arial", sans-serif;
+    color: #06094d;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dashboard-logo {
+    width: 50px;
+  }
+  
+  .admin-nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-btn {
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: #06094d;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-btn.active {
+    background-color: #06094d;
+    color: white;
+  }
+  
+  .nav-btn:hover {
+    background-color: #fef113;
+    color: #06094d;
+  }
+  
+  .admin-info {
+    text-align: right;
+    font-size: 14px;
+    color: #06094d;
+  }
+  
+  .admin-content {
+    padding: 30px 50px;
+  }
+  
+  .admin-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .stat-card {
+    flex: 1;
+    border: 3px solid #06094d;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .stat-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #06094d;
+  }
+  
+  .exam-section {
+    margin-top: 20px;
+  }
+  
+  .exam-cards {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .exam-card {
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    background: #fff;
+    font-size: 15px;
+  }
+  
+  .exam-card.dark {
+    background-color: #06094d;
+    color: white;
+    transition: box-shadow 0.3s;
+  }
+  
+  .exam-card.dark:hover {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }
+  
+  .logout-btn {
+    margin-top: 5px;
+    padding: 6px 12px;
+    background-color: #c50000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-btn:hover {
+    background-color: #a40000;
+  }
+  
+  /*Admin Dashboard*/  

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import "../App.css";
+import "../adminexam.css";
 
 function ExamSchedulePage() {
   const navigate = useNavigate();

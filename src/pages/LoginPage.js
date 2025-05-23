@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { students, admins } from "../data/users";
-import "../App.css"; // pastikan CSS-nya diimport kalau di file terpisah
+import "../loginpage.css"; // pastikan CSS-nya diimport kalau di file terpisah
 
 function LoginPage() {
   const [name, setName] = useState("");

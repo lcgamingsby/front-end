@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../App.css"; // pastikan file CSS diimpor
+import "../admindashboard.css"; // pastikan file CSS diimpor
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 

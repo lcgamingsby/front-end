@@ -1,0 +1,145 @@
+/*Exam CSS*/
+/* App.css */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: sans-serif;
+  }
+  
+  .app-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  .test-title {
+    font-size: 20px;
+    color: #003366;
+  }
+  
+  .timer, .username {
+    font-weight: bold;
+    color: #001f3f;
+  }
+  
+  .content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background: #f6f6f6;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    margin: 15px 0 5px;
+  }
+  
+  .question-number {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .question-number.answered {
+    background-color: #0097DA;
+    color: white;
+    font-weight: bold;
+  }
+  
+  
+  .question-number.active {
+    background: #001f3f;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .card {
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .audio-controls {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .audio-timer {
+    margin-left: 10px;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .option-button {
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+  .option-button.selected {
+    background-color: #FEF113 !important;
+    border-color: #FEF113 !important;
+    color: black !important;
+  }
+  
+  
+  .correct {
+    background-color: #001f3f !important;
+  }
+  
+  .incorrect {
+    background-color: #001f3f !important;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .flag-button {
+    background-color: #ffc107;
+    color: #000;
+  }
+  
+  .question-number.flagged {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+  }
+  /*Exam CSS*/
+  
+  
+  
+  
